@@ -25,80 +25,68 @@
 
 ## UI Screenshots & Interface
 
-### 1. Splash Screen
-The app launches with an elegant blue gradient splash screen featuring:
-- **Branding**: Clean "Todo List" logo with white text
-- **Icon**: Circular clipboard icon in the center
-- **Tagline**: "Stay Organized, Stay Productive"
-- **Design**: Professional blue gradient background
-
-![Splash Screen](src/assets/images/simulator_screenshot_1AC61AA0-520C-4203-9FD8-93A4F6ECA624.png)
-
-### 2. Empty State Screen (Light Theme)
-When no tasks are present, users see a welcoming empty state:
-- **Header**: Purple clipboard icon with "Todo List" title
-- **Theme Toggle**: Moon icon in top-right for dark mode switching
-- **Empty State**: Gray clipboard icon with encouraging message
-- **Message**: "No tasks yet!" with subtitle "Tap the + button to add your first task"
-- **FAB**: Blue circular floating action button with white plus icon
-
-![Empty State Light Theme](src/assets/images/simulator_screenshot_F8B7FEE4-A59F-4135-90BA-C70F1692D543.png)
-
-### 3. Add Task Interface
-The task creation interface slides up as a bottom sheet:
-- **Header**: "Add New Task" with close (X) button
-- **Form Fields**: 
-  - Title field with asterisk (required) and "Enter task title" placeholder
-  - Description field with "Enter task description (optional)" placeholder
-- **Actions**: Gray "Cancel" and blue "Add Task" buttons
-- **Keyboard**: iOS keyboard visible with autocomplete suggestions
-
-![Add Task Interface](src/assets/images/simulator_screenshot_A69EFC95-8D8E-463A-8A8F-B0E75516946E.png)
-
-### 4. Active Task Display (Light Theme)
-When tasks are added, the interface shows:
-- **Statistics Bar**: 
-  - 📝 1 Total | ✅ 0 Completed | 🔵 1 Pending
-  - Clean icons with color-coded numbers
-- **Task Item**: 
-  - Unchecked circle for "Gym" task
-  - Description: "Workout for push day"
-  - Timestamp: "Created on: June 4, 2025 at 7:26 PM"
-  - Red delete icon on the right
-
-![Active Task Light Theme](src/assets/images/simulator_screenshot_866B8BAD-DA36-4B90-A3EB-0BD35B8DC031.png)
-
-### 5. Completed Task State (Light Theme)
-After marking a task complete:
-- **Updated Stats**: 📝 1 Total | ✅ 1 Completed | 🔵 0 Pending
-- **Completed Task**: 
-  - Green checkmark in circle
-  - Strikethrough text for title and description
-  - Maintained timestamp and delete option
-  - Visual completion feedback
-
-![Completed Task Light Theme](src/assets/images/simulator_screenshot_69AD4D16-FD06-4DB4-92BB-EEEC9B508FA0.png)
-
-### 6. Dark Theme Interface
-The app seamlessly switches to dark mode:
-- **Background**: Dark charcoal/black background
-- **Header**: White text on dark background with sun icon (theme toggle)
-- **Statistics**: Same layout with dark theme colors
-- **Task Cards**: Dark surface with contrasting text
-- **Consistency**: All UI elements adapt to dark theme
-- **FAB**: Blue button maintains brand color
-
-![Dark Theme Interface](src/assets/images/simulator_screenshot_CACD667A-511D-4054-9D30-4093B55867B5.png)
-
-### 7. Dark Theme - Empty State
-The empty state in dark mode maintains the same functionality with adapted colors:
-
-![Dark Theme Empty State](src/assets/images/simulator_screenshot_C1DB3345-422A-441A-A6E6-6B3C49CDAAB8.png)
-
-### 8. Dark Theme - Task Management
-Active task management in dark theme showing full functionality:
-
-![Dark Theme Task Management](src/assets/images/simulator_screenshot_42400903-3BD0-4AA5-A3C9-E021548AEE6C.png)
+<table>
+  <tr>
+    <td align="center">
+      <img src="src/assets/images/simulator_screenshot_1AC61AA0-520C-4203-9FD8-93A4F6ECA624.png" width="200"/>
+      <br/>
+      <b>Splash Screen</b>
+      <br/>
+      Blue gradient launch screen with branding
+    </td>
+    <td align="center">
+      <img src="src/assets/images/simulator_screenshot_F8B7FEE4-A59F-4135-90BA-C70F1692D543.png" width="200"/>
+      <br/>
+      <b>Empty State (Light)</b>
+      <br/>
+      Welcome screen with task guidance
+    </td>
+    <td align="center">
+      <img src="src/assets/images/simulator_screenshot_A69EFC95-8D8E-463A-8A8F-B0E75516946E.png" width="200"/>
+      <br/>
+      <b>Add Task Interface</b>
+      <br/>
+      Bottom sheet for creating tasks
+    </td>
+    <td align="center">
+      <img src="src/assets/images/simulator_screenshot_866B8BAD-DA36-4B90-A3EB-0BD35B8DC031.png" width="200"/>
+      <br/>
+      <b>Active Tasks (Light)</b>
+      <br/>
+      Task display with statistics
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="src/assets/images/simulator_screenshot_69AD4D16-FD06-4DB4-92BB-EEEC9B508FA0.png" width="200"/>
+      <br/>
+      <b>Completed Tasks</b>
+      <br/>
+      Visual completion feedback
+    </td>
+    <td align="center">
+      <img src="src/assets/images/simulator_screenshot_CACD667A-511D-4054-9D30-4093B55867B5.png" width="200"/>
+      <br/>
+      <b>Dark Theme Interface</b>
+      <br/>
+      Task management in dark mode
+    </td>
+    <td align="center">
+      <img src="src/assets/images/simulator_screenshot_C1DB3345-422A-441A-A6E6-6B3C49CDAAB8.png" width="200"/>
+      <br/>
+      <b>Dark Theme Empty</b>
+      <br/>
+      Empty state in dark mode
+    </td>
+    <td align="center">
+      <img src="src/assets/images/simulator_screenshot_42400903-3BD0-4AA5-A3C9-E021548AEE6C.png" width="200"/>
+      <br/>
+      <b>Dark Theme Tasks</b>
+      <br/>
+      Active task management
+    </td>
+  </tr>
+</table>
 
 ### Key UI Features Demonstrated:
 - ✅ **Responsive Design**: Consistent across different states
