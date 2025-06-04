@@ -1,97 +1,321 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Task Manager App - Project Report
 
-# Getting Started
+## Table of Contents
+1. [App Overview](#app-overview)
+2. [UI Screenshots & Interface](#ui-screenshots--interface)
+3. [Features Summary](#features-summary)
+4. [Technical Architecture](#technical-architecture)
+5. [Installation & Setup Guide](#installation--setup-guide)
+6. [Development & Testing](#development--testing)
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## App Overview
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+**Task Manager** is a modern, cross-platform mobile application built with React Native that helps users organize and track their daily tasks efficiently. The app features a clean, intuitive interface with both light and dark theme support, providing users with a seamless task management experience.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### Key Highlights
+- **Platform**: Cross-platform (iOS & Android)
+- **Framework**: React Native 0.79.2
+- **UI Design**: Modern, responsive design with theme switching
+- **Storage**: Local storage using MMKV for persistence
+- **Navigation**: Stack-based navigation with React Navigation
 
-```sh
-# Using npm
+---
+
+## UI Screenshots & Interface
+
+### 1. Splash Screen
+The app launches with an elegant blue gradient splash screen featuring:
+- **Branding**: Clean "Todo List" logo with white text
+- **Icon**: Circular clipboard icon in the center
+- **Tagline**: "Stay Organized, Stay Productive"
+- **Design**: Professional blue gradient background
+
+![Splash Screen](src/assets/images/simulator_screenshot_1AC61AA0-520C-4203-9FD8-93A4F6ECA624.png)
+
+### 2. Empty State Screen (Light Theme)
+When no tasks are present, users see a welcoming empty state:
+- **Header**: Purple clipboard icon with "Todo List" title
+- **Theme Toggle**: Moon icon in top-right for dark mode switching
+- **Empty State**: Gray clipboard icon with encouraging message
+- **Message**: "No tasks yet!" with subtitle "Tap the + button to add your first task"
+- **FAB**: Blue circular floating action button with white plus icon
+
+![Empty State Light Theme](src/assets/images/simulator_screenshot_F8B7FEE4-A59F-4135-90BA-C70F1692D543.png)
+
+### 3. Add Task Interface
+The task creation interface slides up as a bottom sheet:
+- **Header**: "Add New Task" with close (X) button
+- **Form Fields**: 
+  - Title field with asterisk (required) and "Enter task title" placeholder
+  - Description field with "Enter task description (optional)" placeholder
+- **Actions**: Gray "Cancel" and blue "Add Task" buttons
+- **Keyboard**: iOS keyboard visible with autocomplete suggestions
+
+![Add Task Interface](src/assets/images/simulator_screenshot_A69EFC95-8D8E-463A-8A8F-B0E75516946E.png)
+
+### 4. Active Task Display (Light Theme)
+When tasks are added, the interface shows:
+- **Statistics Bar**: 
+  - 📝 1 Total | ✅ 0 Completed | 🔵 1 Pending
+  - Clean icons with color-coded numbers
+- **Task Item**: 
+  - Unchecked circle for "Gym" task
+  - Description: "Workout for push day"
+  - Timestamp: "Created on: June 4, 2025 at 7:26 PM"
+  - Red delete icon on the right
+
+![Active Task Light Theme](src/assets/images/simulator_screenshot_866B8BAD-DA36-4B90-A3EB-0BD35B8DC031.png)
+
+### 5. Completed Task State (Light Theme)
+After marking a task complete:
+- **Updated Stats**: 📝 1 Total | ✅ 1 Completed | 🔵 0 Pending
+- **Completed Task**: 
+  - Green checkmark in circle
+  - Strikethrough text for title and description
+  - Maintained timestamp and delete option
+  - Visual completion feedback
+
+![Completed Task Light Theme](src/assets/images/simulator_screenshot_69AD4D16-FD06-4DB4-92BB-EEEC9B508FA0.png)
+
+### 6. Dark Theme Interface
+The app seamlessly switches to dark mode:
+- **Background**: Dark charcoal/black background
+- **Header**: White text on dark background with sun icon (theme toggle)
+- **Statistics**: Same layout with dark theme colors
+- **Task Cards**: Dark surface with contrasting text
+- **Consistency**: All UI elements adapt to dark theme
+- **FAB**: Blue button maintains brand color
+
+![Dark Theme Interface](src/assets/images/simulator_screenshot_CACD667A-511D-4054-9D30-4093B55867B5.png)
+
+### 7. Dark Theme - Empty State
+The empty state in dark mode maintains the same functionality with adapted colors:
+
+![Dark Theme Empty State](src/assets/images/simulator_screenshot_C1DB3345-422A-441A-A6E6-6B3C49CDAAB8.png)
+
+### 8. Dark Theme - Task Management
+Active task management in dark theme showing full functionality:
+
+![Dark Theme Task Management](src/assets/images/simulator_screenshot_42400903-3BD0-4AA5-A3C9-E021548AEE6C.png)
+
+### Key UI Features Demonstrated:
+- ✅ **Responsive Design**: Consistent across different states
+- ✅ **Theme Switching**: Seamless light/dark mode transition
+- ✅ **Visual Feedback**: Clear completion states and interactions
+- ✅ **Modern Material Design**: Clean cards, proper spacing, shadows
+- ✅ **Intuitive Navigation**: Bottom sheets, floating action buttons
+- ✅ **Real-time Statistics**: Dynamic task counters with icons
+- ✅ **Professional Polish**: Proper typography, colors, and spacing
+
+---
+
+## Features Summary
+
+### Core Functionality
+1. **Task Management**
+   - ✅ Create new tasks with title and description
+   - ✅ Mark tasks as complete/incomplete with visual feedback
+   - ✅ Delete tasks with confirmation dialog
+   - ✅ Real-time task statistics (Total, Completed, Pending)
+
+2. **User Interface**
+   - 🎨 Light and Dark theme switching (moon/sun toggle)
+   - 📱 Responsive design with proper scaling
+   - 🔄 Pull-to-refresh functionality
+   - ⚡ Smooth animations and transitions
+   - 📋 Clean, modern Material Design components
+
+3. **Data Persistence**
+   - 💾 Local storage using MMKV (fast and efficient)
+   - 🔄 Automatic data synchronization
+   - 📅 Task creation timestamps with precise date/time
+   - 🗃️ Persistent theme preferences
+
+4. **User Experience**
+   - 🎯 Intuitive swipe gestures
+   - 📲 Bottom sheet for task creation
+   - 🔔 Loading states and error handling
+   - 📊 Visual task completion indicators (checkmarks, strikethrough)
+   - 🎪 Empty state with helpful guidance
+
+### Technical Features
+- **Architecture**: Clean, modular architecture with separation of concerns
+- **State Management**: Custom hooks for state management
+- **Dependency Injection**: Service container pattern
+- **Type Safety**: Full TypeScript implementation
+- **Performance**: Optimized rendering with FlatList
+- **Accessibility**: Screen reader support and proper touch targets
+
+---
+
+## Technical Architecture
+
+### Project Structure
+```
+src/
+├── components/          # Reusable UI components
+│   ├── TaskItem.tsx    # Individual task display
+│   ├── AddTaskActionSheet.tsx
+│   └── EmptyState.tsx
+├── hooks/              # Custom React hooks
+│   ├── useTasks.ts     # Task management logic
+│   └── useTheme.ts     # Theme management
+├── models/             # TypeScript interfaces
+│   ├── Task.ts         # Task data model
+│   └── Theme.ts        # Theme model
+├── services/           # Business logic services
+│   ├── TaskStorageService.ts
+│   ├── ThemeService.ts
+│   └── ServiceContainer.ts
+├── screens/            # Screen components
+│   ├── HomeScreen.tsx
+│   └── SplashScreen.tsx
+├── utils/              # Utility functions
+│   └── DateUtils.ts
+└── types/              # Type definitions
+```
+
+### Key Dependencies
+- **React Native**: 0.79.2 - Core framework
+- **React Navigation**: 7.x - Navigation management
+- **MMKV**: 3.2.0 - Fast local storage
+- **Vector Icons**: 10.2.0 - Icon library
+- **Actions Sheet**: 0.9.7 - Bottom sheet component
+- **Gesture Handler**: 2.25.0 - Gesture recognition
+- **Safe Area Context**: 5.4.1 - Safe area handling
+
+---
+
+## Installation & Setup Guide
+
+### Prerequisites
+Before running the application, ensure you have the following installed:
+
+1. **Node.js**: Version 18 or higher
+2. **React Native CLI**: Latest version
+3. **Android Studio**: For Android development
+4. **Xcode**: For iOS development (macOS only)
+5. **Git**: For version control
+
+### Step 1: Environment Setup
+Follow the official React Native environment setup guide:
+https://reactnative.dev/docs/set-up-your-environment
+
+### Step 2: Clone and Install
+```bash
+# Clone the repository
+git clone <repository-url>
+cd testTask
+
+# Install dependencies
+npm install
+
+# For iOS only - Install CocoaPods dependencies
+cd ios && pod install && cd ..
+```
+
+### Step 3: Platform-Specific Setup
+
+#### Android Setup
+1. Ensure Android Studio is installed with SDK Platform 34
+2. Set up Android Virtual Device (AVD) or connect physical device
+3. Enable USB Debugging on physical device
+
+#### iOS Setup (macOS only)
+1. Install Xcode from Mac App Store
+2. Install iOS Simulator
+3. Set up development certificates
+
+### Step 4: Run the Application
+
+#### Start Metro Bundler
+```bash
 npm start
-
-# OR using Yarn
-yarn start
+# or
+npx react-native start
 ```
 
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+#### Run on Android
+```bash
 npm run android
-
-# OR using Yarn
-yarn android
+# or
+npx react-native run-android
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+#### Run on iOS
+```bash
 npm run ios
-
-# OR using Yarn
-yarn ios
+# or
+npx react-native run-ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### Step 5: Verify Installation
+The app should launch and display:
+- Blue gradient splash screen with "Todo List" branding
+- Home screen with "No tasks yet!" message
+- Floating action button (+) for adding tasks
+- Theme toggle button in the header
+- Proper navigation and interactions
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+---
 
-## Step 3: Modify your app
+## Development & Testing
 
-Now that you have successfully run the app, let's make changes!
+### Available Scripts
+```bash
+npm start          # Start Metro bundler
+npm run android    # Run on Android
+npm run ios        # Run on iOS
+npm run lint       # Run ESLint
+npm test          # Run Jest tests
+```
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+### Development Tools
+- **Fast Refresh**: Enabled for quick development cycles
+- **ESLint**: Code linting and formatting
+- **TypeScript**: Type checking and IntelliSense
+- **React DevTools**: Component inspection
+- **Flipper**: Advanced debugging (optional)
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+### Building for Production
+```bash
+# Android
+cd android && ./gradlew assembleRelease
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+# iOS
+# Use Xcode Archive or
+npx react-native build-ios --mode=Release
+```
 
-## Congratulations! :tada:
+### Performance Optimization
+- Implements FlatList for efficient list rendering
+- Uses MMKV for fast local storage operations
+- Optimized image and icon loading
+- Proper memory management with hooks
 
-You've successfully run and modified your React Native App. :partying_face:
+---
 
-### Now what?
+## Conclusion
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+The Task Manager app demonstrates modern React Native development practices with clean architecture, TypeScript integration, and excellent user experience. The application is production-ready with proper error handling, data persistence, and cross-platform compatibility.
 
-# Troubleshooting
+As evidenced by the screenshots, the app delivers:
+- **Professional UI/UX**: Clean, modern interface with thoughtful design
+- **Consistent Theming**: Seamless light/dark mode implementation
+- **Intuitive Interactions**: Easy task management with visual feedback
+- **Polish & Detail**: Proper spacing, typography, and micro-interactions
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+### Future Enhancements
+- Task categories and priorities
+- Due dates and reminders
+- Cloud synchronization
+- Task sharing and collaboration
+- Advanced filtering and sorting
 
-# Learn More
+---
 
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+**Report Generated**: December 2024  
+**App Version**: 0.0.1  
+**React Native Version**: 0.79.2
