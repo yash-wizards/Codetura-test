@@ -4,13 +4,18 @@ import {
     Text,
     StyleSheet,
     Dimensions,
+    StatusBar,
 } from 'react-native';
+import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { resetAndNavigate } from '../utils/NavigationUtils';
 
 interface SplashScreenProps {
 }
 
-const SplashScreen: React.FC<SplashScreenProps> = () => {
+const SplashScreenContent: React.FC<SplashScreenProps> = () => {
+    const insets = useSafeAreaInsets();
 
     useEffect(() => {
         setTimeout(() => {
@@ -20,15 +25,31 @@ const SplashScreen: React.FC<SplashScreenProps> = () => {
 
     return (
         <View style={styles.container}>
-            <View
-                style={styles.content}>
+            <StatusBar
+                barStyle="light-content"
+                backgroundColor="#4A90E2"
+                translucent={true}
+            />
+            <View style={[styles.content, { paddingTop: insets.top }]}>
                 <View style={styles.iconContainer}>
-                    <Text style={styles.icon}>📝</Text>
+                    <Icon name="assignment" size={moderateScale(80)} color="#FFFFFF" />
                 </View>
                 <Text style={styles.title}>Todo List</Text>
                 <Text style={styles.subtitle}>Stay Organized, Stay Productive</Text>
             </View>
         </View>
+    );
+};
+
+const SplashScreen: React.FC<SplashScreenProps> = () => {
+    return (
+        <SafeAreaProvider>
+            <View style={{ flex: 1, backgroundColor: '#4A90E2' }}>
+                <SafeAreaView style={{ flex: 1 }} edges={['left', 'right']}>
+                    <SplashScreenContent />
+                </SafeAreaView>
+            </View>
+        </SafeAreaProvider>
     );
 };
 
@@ -42,33 +63,31 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     content: {
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
     },
     iconContainer: {
-        width: 120,
-        height: 120,
-        borderRadius: 60,
+        width: scale(120),
+        height: scale(120),
+        borderRadius: scale(60),
         backgroundColor: 'rgba(255, 255, 255, 0.2)',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 30,
-    },
-    icon: {
-        fontSize: 60,
+        marginBottom: verticalScale(30),
     },
     title: {
-        fontSize: 32,
+        fontSize: moderateScale(32),
         fontWeight: 'bold',
         color: '#FFFFFF',
-        marginBottom: 8,
+        marginBottom: verticalScale(8),
         textAlign: 'center',
     },
     subtitle: {
-        fontSize: 16,
+        fontSize: moderateScale(16),
         color: 'rgba(255, 255, 255, 0.8)',
         textAlign: 'center',
-        marginBottom: 40,
+        marginBottom: verticalScale(40),
     }
 });
 
